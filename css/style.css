@@ -809,8 +809,6 @@ a {
     body {
         max-width: 900px;
         margin: 0 auto;
-        border-left: 2px solid var(--red);
-        border-right: 2px solid var(--red);
     }
 
     .villa-label .villa-name {
