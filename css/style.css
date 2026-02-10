@@ -472,12 +472,13 @@ a {
 }
 
 .accordion-arrow {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1;
 }
 
 .accordion-item.open .accordion-arrow {
-    transform: rotate(180deg);
+    content: "−";
 }
 
 .accordion-content {
@@ -589,6 +590,162 @@ a {
 
 .content-section .btn:last-child {
     margin-bottom: 0;
+}
+
+/* Events Widget */
+.events-widget {
+    background: var(--cream);
+    border: 2px solid var(--red);
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.events-widget h3 {
+    font-family: 'Advercase', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red);
+}
+
+.parade-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.parade-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.parade-scroll::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+
+.parade-scroll::-webkit-scrollbar-thumb {
+    background: var(--red);
+}
+
+.parade-day {
+    margin-bottom: 16px;
+}
+
+.parade-day:last-child {
+    margin-bottom: 0;
+}
+
+.parade-day-header {
+    font-family: 'Advercase', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--red);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.parade-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--red);
+}
+
+.parade-item:last-child {
+    border-bottom: none;
+}
+
+.parade-time {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.parade-location-header {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--red);
+    margin-bottom: 4px;
+}
+
+.parade-krewes {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.krewe-link {
+    color: var(--red);
+    text-decoration: underline;
+}
+
+.krewe-link:hover {
+    color: var(--red-dark);
+}
+
+.krewe-name {
+    color: var(--red);
+}
+
+.parade-trackers {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 2px solid var(--red);
+}
+
+.parade-trackers p {
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.tracker-link {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 0.85rem;
+}
+
+.event-card {
+    background: var(--cream);
+    border: 2px solid var(--red);
+    margin-bottom: 12px;
+}
+
+.event-card:last-child {
+    margin-bottom: 0;
+}
+
+.event-card-content {
+    padding: 14px;
+}
+
+.event-card-date {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.event-card-title {
+    font-family: 'Advercase', sans-serif;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--red);
+    margin-bottom: 6px;
+}
+
+.event-card-desc {
+    font-size: 0.85rem;
+    color: var(--red);
+    line-height: 1.4;
+}
+
+.event-card-desc a {
+    color: var(--red);
+    text-decoration: underline;
 }
 
 /* Floating Share Button */
