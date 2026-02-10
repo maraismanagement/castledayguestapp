@@ -600,15 +600,29 @@ a {
     margin-bottom: 24px;
 }
 
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red);
+}
+
 .events-widget h3 {
     font-family: 'Advercase', sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--red);
+    margin: 0;
+}
+
+.wwoz-link {
+    font-family: 'Advercase', sans-serif;
+    font-size: 0.85rem;
+    color: #d4a574;
+    text-decoration: underline;
 }
 
 .parade-scroll {
