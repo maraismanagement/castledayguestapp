@@ -301,17 +301,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <span>WWOZ Livewire</span>
-                            <span class="accordion-arrow">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <ul>
-                                <li>Check the <a href="https://www.wwoz.org/calendar/livewire-music" target="_blank"><strong>WWOZ LiveWire Page</strong></a> for all major live events happening in New Orleans!</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </section>
             <section class="content-section">
@@ -512,24 +501,21 @@
     <script type="text/javascript">
     /*<![CDATA[*/
     (function () {
+      var shopifyInitialized = false;
       var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-      if (window.ShopifyBuy) {
-        if (window.ShopifyBuy.UI) {
-          ShopifyBuyInit();
-        } else {
-          loadScript();
-        }
-      } else {
-        loadScript();
-      }
-      function loadScript() {
+
+      function loadScript(callback) {
         var script = document.createElement('script');
         script.async = true;
         script.src = scriptURL;
+        script.onload = callback;
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-        script.onload = ShopifyBuyInit;
       }
+
       function ShopifyBuyInit() {
+        if (shopifyInitialized) return;
+        shopifyInitialized = true;
+
         var client = ShopifyBuy.buildClient({
           domain: 'h1v0e4-10.myshopify.com',
           storefrontAccessToken: '8b21fe241fcccce731c7502ac837ecb5',
@@ -556,6 +542,18 @@
           ui.createComponent('product', { id: '10173609902399', node: document.getElementById('product-component-1765393090361'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
         });
       }
+
+      // Initialize when shop tab is clicked
+      document.addEventListener('click', function(e) {
+        var shopTab = e.target.closest('[data-tab="shop"]');
+        if (shopTab && !shopifyInitialized) {
+          if (window.ShopifyBuy && window.ShopifyBuy.UI) {
+            ShopifyBuyInit();
+          } else {
+            loadScript(ShopifyBuyInit);
+          }
+        }
+      });
     })();
     /*]]>*/
     </script>
