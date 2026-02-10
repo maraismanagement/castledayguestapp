@@ -24,7 +24,7 @@
         <div class="nav-grid">
             <a href="#" data-tab="house" class="nav-item">House Info</a>
             <a href="#" data-tab="pool" class="nav-item">Pool / Hot Tub</a>
-            <a href="https://castledayretreats.com/merch" target="_blank" class="nav-item">Shop</a>
+            <a href="#" data-tab="shop" class="nav-item">Shop</a>
             <a href="#" data-tab="services" class="nav-item">Add-On Services</a>
             <a href="#" data-tab="recs" class="nav-item">Recs & Events</a>
             <a href="#" data-tab="contact" class="nav-item">Contact</a>
@@ -460,6 +460,21 @@
             </section>
         </div>
 
+        <div id="shop" class="tab-panel">
+            <section class="content-section">
+                <h2>CastleDay Merch</h2>
+                <div class="info-block">
+                    <p>Take a piece of CastleDay home with you.</p>
+                </div>
+                <div class="shop-products">
+                    <div id="product-component-1768322498809"></div>
+                    <div id="product-component-1765490330559"></div>
+                    <div id="product-component-1765392260161"></div>
+                    <div id="product-component-1765393090361"></div>
+                </div>
+            </section>
+        </div>
+
         <div id="contact" class="tab-panel">
             <section class="content-section">
                 <h2>Contact Us</h2>
@@ -491,5 +506,55 @@
     <script src="../js/accordion.js"></script>
     <script src="../js/share.js"></script>
     <script src="../js/events-2026.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    (function () {
+      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        } else {
+          loadScript();
+        }
+      } else {
+        loadScript();
+      }
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'h1v0e4-10.myshopify.com',
+          storefrontAccessToken: '8b21fe241fcccce731c7502ac837ecb5',
+        });
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          var productOptions = {
+            "product": {
+              "styles": {
+                "product": { "@media (min-width: 601px)": { "max-width": "calc(25% - 20px)", "margin-left": "20px", "margin-bottom": "50px" } },
+                "button": { "font-family": "Lato, sans-serif", ":hover": { "background-color": "#be6061" }, "background-color": "#d36b6c", ":focus": { "background-color": "#be6061" } }
+              },
+              "text": { "button": "Add to cart" }
+            },
+            "cart": {
+              "styles": { "button": { "font-family": "Lato, sans-serif", ":hover": { "background-color": "#be6061" }, "background-color": "#d36b6c", ":focus": { "background-color": "#be6061" } } }
+            },
+            "toggle": {
+              "styles": { "toggle": { "font-family": "Lato, sans-serif", "background-color": "#d36b6c", ":hover": { "background-color": "#be6061" }, ":focus": { "background-color": "#be6061" } } }
+            }
+          };
+          ui.createComponent('product', { id: '10202716340543', node: document.getElementById('product-component-1768322498809'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
+          ui.createComponent('product', { id: '10173617209663', node: document.getElementById('product-component-1765490330559'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
+          ui.createComponent('product', { id: '10173610099007', node: document.getElementById('product-component-1765392260161'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
+          ui.createComponent('product', { id: '10173609902399', node: document.getElementById('product-component-1765393090361'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
+        });
+      }
+    })();
+    /*]]>*/
+    </script>
 </body>
 </html>

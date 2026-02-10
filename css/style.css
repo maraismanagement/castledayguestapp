@@ -801,6 +801,24 @@ a {
     transform: translateY(0);
 }
 
+/* Shop Products */
+.shop-products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.shop-products > div {
+    min-height: 200px;
+}
+
+@media (min-width: 600px) {
+    .shop-products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 /* Responsive */
 @media (min-width: 600px) {
 }
