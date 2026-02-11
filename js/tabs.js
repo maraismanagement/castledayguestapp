@@ -1,5 +1,14 @@
 // Tab navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Mardi Gras season hover effect (until Feb 18, 2026)
+    const now = new Date();
+    const mardiGrasEnd = new Date('2026-02-18T23:59:59');
+    if (now <= mardiGrasEnd) {
+        const recsTab = document.querySelector('[data-tab="recs"]');
+        if (recsTab) {
+            recsTab.classList.add('mardi-gras-hover');
+        }
+    }
     const tabs = document.querySelectorAll('.nav-item[data-tab]');
     const panels = document.querySelectorAll('.tab-panel');
 

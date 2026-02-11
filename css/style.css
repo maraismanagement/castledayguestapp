@@ -250,6 +250,12 @@ body {
     color: var(--cream);
 }
 
+/* Mardi Gras season hover effect */
+.nav-item.mardi-gras-hover:hover {
+    background: linear-gradient(135deg, #7B2D8E 0%, #FFD700 50%, #00843D 100%);
+    color: white;
+}
+
 .nav-label {
     font-family: 'Advercase', sans-serif;
     font-size: 0.6rem;
