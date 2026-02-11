@@ -614,6 +614,12 @@ a {
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 2px solid var(--red);
+    gap: 12px;
+}
+
+.mardi-gras-beads {
+    flex-shrink: 0;
+    margin-top: -10px;
 }
 
 .events-widget h3 {
