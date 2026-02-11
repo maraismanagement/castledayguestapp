@@ -833,6 +833,48 @@ a {
     }
 }
 
+/* Mardi Gras Beads */
+.nav-item-beads {
+    position: relative;
+}
+
+.nav-item-beads::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    width: 4px;
+    height: 28px;
+    background:
+        radial-gradient(circle at 50% 10%, #7B2D8E 3px, transparent 3px),
+        radial-gradient(circle at 50% 40%, #FFD700 3px, transparent 3px),
+        radial-gradient(circle at 50% 70%, #00843D 3px, transparent 3px),
+        radial-gradient(circle at 50% 100%, #7B2D8E 3px, transparent 3px);
+    background-size: 100% 100%;
+    pointer-events: none;
+}
+
+.events-header-beads {
+    position: relative;
+}
+
+.events-header-beads::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -8px;
+    width: 5px;
+    height: 36px;
+    background:
+        radial-gradient(circle at 50% 8%, #7B2D8E 4px, transparent 4px),
+        radial-gradient(circle at 50% 30%, #FFD700 4px, transparent 4px),
+        radial-gradient(circle at 50% 52%, #00843D 4px, transparent 4px),
+        radial-gradient(circle at 50% 74%, #7B2D8E 4px, transparent 4px),
+        radial-gradient(circle at 50% 96%, #FFD700 4px, transparent 4px);
+    background-size: 100% 100%;
+    pointer-events: none;
+}
+
 /* Search */
 .search-btn-header {
     position: absolute;
