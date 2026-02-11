@@ -13,20 +13,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const panels = document.querySelectorAll('.tab-panel');
     const headerImage = document.querySelector('.header-image img');
 
-    // Map tab IDs to header images
+    // Map tab IDs to header images and focus points
     const headerImages = {
-        'house': '../images/header-house.jpg',
-        'pool': '../images/header-pool.jpg',
-        'shop': '../images/header-shop.jpg',
-        'services': '../images/header-services.jpg',
-        'recs': '../images/header-recs.jpg',
-        'contact': '../images/header-contact.jpg'
+        'house': { src: '../images/header-house.jpg', position: 'center center' },
+        'pool': { src: '../images/header-pool.jpg', position: 'center center' },
+        'shop': { src: '../images/header-shop.jpg', position: 'center center' },
+        'services': { src: '../images/header-services.jpg', position: 'center 30%' },
+        'recs': { src: '../images/header-recs.jpg', position: 'center 20%' },
+        'contact': { src: '../images/header-contact.jpg', position: 'center center' }
     };
 
     // Function to update header image
     function updateHeaderImage(tabId) {
         if (headerImage && headerImages[tabId]) {
-            headerImage.src = headerImages[tabId];
+            headerImage.src = headerImages[tabId].src;
+            headerImage.style.objectPosition = headerImages[tabId].position;
         }
     }
 
