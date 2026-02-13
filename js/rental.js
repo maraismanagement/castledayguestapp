@@ -4,6 +4,7 @@
     var rentalProductsInitialized = false;
     var selectedDeliveryDate = null;
     var selectedPickupDate = null;
+    var shopifyUI = null;
 
     // Format date for display
     function formatDate(dateStr) {
@@ -101,6 +102,8 @@
             });
 
             ShopifyBuy.UI.onReady(client).then(function(ui) {
+                shopifyUI = ui;
+
                 // Cold Plunge product
                 var coldPlungeContainer = document.getElementById('product-cold-plunge');
                 if (coldPlungeContainer && !coldPlungeContainer.hasChildNodes()) {
@@ -143,7 +146,17 @@
                                 DOMEvents: {
                                     'click .shopify-buy__btn': function() {
                                         updateSelectedDates();
-                                        setTimeout(injectDatesIntoCart, 500);
+                                        setTimeout(function() {
+                                            injectDatesIntoCart();
+                                            // Set cart note with rental dates
+                                            if (shopifyUI && selectedDeliveryDate) {
+                                                var note = 'COLD PLUNGE RENTAL\nDelivery: ' + selectedDeliveryDate + '\nPickup: ' + selectedPickupDate;
+                                                var cart = shopifyUI.components.cart[0];
+                                                if (cart && cart.model) {
+                                                    cart.model.setNote(note);
+                                                }
+                                            }
+                                        }, 800);
                                     }
                                 }
                             },
