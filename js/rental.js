@@ -54,7 +54,7 @@
                 var coldPlungeContainer = document.getElementById('product-cold-plunge');
                 if (coldPlungeContainer && !coldPlungeContainer.hasChildNodes()) {
                     ui.createComponent('product', {
-                        id: '10246728089919',
+                        id: '10246638895423',
                         node: coldPlungeContainer,
                         moneyFormat: '%24%7B%7Bamount%7D%7D',
                         options: {
@@ -124,7 +124,7 @@
                 var floatiesContainer = document.getElementById('product-floaties');
                 if (floatiesContainer && !floatiesContainer.hasChildNodes()) {
                     ui.createComponent('product', {
-                        id: '10246638895423',
+                        id: '10246728089919',
                         node: floatiesContainer,
                         moneyFormat: '%24%7B%7Bamount%7D%7D',
                         options: {
