@@ -617,11 +617,6 @@ a {
     gap: 12px;
 }
 
-.mardi-gras-beads {
-    flex-shrink: 0;
-    margin-top: -10px;
-}
-
 .events-widget h3 {
     font-family: 'Advercase', sans-serif;
     font-size: 1.2rem;
