@@ -1,6 +1,7 @@
 // Equipment Rental System - Simple version (name collected at checkout)
 (function() {
-    let shopifyClient = null;
+    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    var rentalProductsInitialized = false;
 
     // Format date for display
     function formatDate(dateStr) {
@@ -12,7 +13,7 @@
         });
     }
 
-    // Set up date picker with min date of today
+    // Set up date picker with min date of tomorrow
     function initDatePicker() {
         const coldPlungeDate = document.getElementById('coldPlungeDate');
         if (coldPlungeDate) {
@@ -24,141 +25,174 @@
         }
     }
 
-    // Initialize Shopify buy buttons when services tab is shown
+    // Load Shopify SDK if not already loaded
+    function loadShopifySDK(callback) {
+        if (window.ShopifyBuy && window.ShopifyBuy.UI) {
+            callback();
+            return;
+        }
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        script.onload = callback;
+        document.head.appendChild(script);
+    }
+
+    // Initialize Shopify buy buttons
     function initShopifyProducts() {
-        if (typeof ShopifyBuy === 'undefined') return;
+        if (rentalProductsInitialized) return;
 
-        const client = ShopifyBuy.buildClient({
-            domain: 'h1v0e4-10.myshopify.com',
-            storefrontAccessToken: '8b21fe241fcccce731c7502ac837ecb5'
+        loadShopifySDK(function() {
+            var client = ShopifyBuy.buildClient({
+                domain: 'h1v0e4-10.myshopify.com',
+                storefrontAccessToken: '8b21fe241fcccce731c7502ac837ecb5'
+            });
+
+            ShopifyBuy.UI.onReady(client).then(function(ui) {
+                // Cold Plunge product
+                var coldPlungeContainer = document.getElementById('product-cold-plunge');
+                if (coldPlungeContainer && !coldPlungeContainer.hasChildNodes()) {
+                    ui.createComponent('product', {
+                        id: '10246728089919',
+                        node: coldPlungeContainer,
+                        moneyFormat: '%24%7B%7Bamount%7D%7D',
+                        options: {
+                            product: {
+                                styles: {
+                                    product: {
+                                        "@media (min-width: 601px)": {
+                                            "max-width": "100%",
+                                            "margin-left": "0",
+                                            "margin-bottom": "0"
+                                        }
+                                    },
+                                    button: {
+                                        "font-family": "Advercase, sans-serif",
+                                        "font-size": "14px",
+                                        "padding-top": "12px",
+                                        "padding-bottom": "12px",
+                                        "color": "#edecde",
+                                        ":hover": { "background-color": "#c15658", "color": "#edecde" },
+                                        "background-color": "#d65f62",
+                                        ":focus": { "background-color": "#c15658" },
+                                        "border-radius": "0px"
+                                    },
+                                    title: { display: "none" },
+                                    price: { display: "none" }
+                                },
+                                contents: {
+                                    img: false,
+                                    title: false,
+                                    price: false
+                                },
+                                text: {
+                                    button: 'Add to Cart'
+                                }
+                            },
+                            cart: {
+                                styles: {
+                                    button: {
+                                        "font-family": "Advercase, sans-serif",
+                                        "color": "#edecde",
+                                        "background-color": "#d65f62",
+                                        ":hover": { "background-color": "#c15658", "color": "#edecde" },
+                                        ":focus": { "background-color": "#c15658" },
+                                        "border-radius": "0px"
+                                    }
+                                },
+                                text: {
+                                    total: 'Subtotal',
+                                    button: 'Checkout'
+                                },
+                                popup: false
+                            },
+                            toggle: {
+                                styles: {
+                                    toggle: {
+                                        "background-color": "#d65f62",
+                                        ":hover": { "background-color": "#c15658" },
+                                        ":focus": { "background-color": "#c15658" }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Floaties product
+                var floatiesContainer = document.getElementById('product-floaties');
+                if (floatiesContainer && !floatiesContainer.hasChildNodes()) {
+                    ui.createComponent('product', {
+                        id: '10246638895423',
+                        node: floatiesContainer,
+                        moneyFormat: '%24%7B%7Bamount%7D%7D',
+                        options: {
+                            product: {
+                                styles: {
+                                    product: {
+                                        "@media (min-width: 601px)": {
+                                            "max-width": "100%",
+                                            "margin-left": "0",
+                                            "margin-bottom": "0"
+                                        }
+                                    },
+                                    button: {
+                                        "font-family": "Advercase, sans-serif",
+                                        "font-size": "14px",
+                                        "padding-top": "12px",
+                                        "padding-bottom": "12px",
+                                        "color": "#edecde",
+                                        ":hover": { "background-color": "#c15658", "color": "#edecde" },
+                                        "background-color": "#d65f62",
+                                        ":focus": { "background-color": "#c15658" },
+                                        "border-radius": "0px"
+                                    },
+                                    title: { display: "none" },
+                                    price: { display: "none" }
+                                },
+                                contents: {
+                                    img: false,
+                                    title: false,
+                                    price: false
+                                },
+                                text: {
+                                    button: 'Add to Cart'
+                                }
+                            },
+                            cart: {
+                                styles: {
+                                    button: {
+                                        "font-family": "Advercase, sans-serif",
+                                        "color": "#edecde",
+                                        "background-color": "#d65f62",
+                                        ":hover": { "background-color": "#c15658", "color": "#edecde" },
+                                        ":focus": { "background-color": "#c15658" },
+                                        "border-radius": "0px"
+                                    }
+                                },
+                                text: {
+                                    total: 'Subtotal',
+                                    button: 'Checkout'
+                                },
+                                popup: false
+                            },
+                            toggle: {
+                                styles: {
+                                    toggle: {
+                                        "background-color": "#d65f62",
+                                        ":hover": { "background-color": "#c15658" },
+                                        ":focus": { "background-color": "#c15658" }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                rentalProductsInitialized = true;
+            });
         });
-
-        // Cold Plunge product
-        const coldPlungeContainer = document.getElementById('product-cold-plunge');
-        if (coldPlungeContainer && !coldPlungeContainer.hasChildNodes()) {
-            ShopifyBuy.UI.onReady(client).then(function(ui) {
-                ui.createComponent('product', {
-                    id: '10246728089919',
-                    node: coldPlungeContainer,
-                    moneyFormat: '%24%7B%7Bamount%7D%7D',
-                    options: {
-                        product: {
-                            styles: {
-                                product: {
-                                    "@media (min-width: 601px)": {
-                                        "max-width": "100%",
-                                        "margin-left": "0",
-                                        "margin-bottom": "0"
-                                    }
-                                },
-                                button: {
-                                    "font-family": "Advercase, sans-serif",
-                                    "font-size": "14px",
-                                    "padding-top": "12px",
-                                    "padding-bottom": "12px",
-                                    ":hover": { "background-color": "#5a1a1a" },
-                                    "background-color": "#6b1f1f",
-                                    ":focus": { "background-color": "#5a1a1a" },
-                                    "border-radius": "0px"
-                                },
-                                title: { display: "none" },
-                                price: { display: "none" }
-                            },
-                            contents: {
-                                img: false,
-                                title: false,
-                                price: false
-                            },
-                            text: {
-                                button: 'Add to Cart'
-                            },
-                            events: {
-                                beforeAddToCart: function(component) {
-                                    const dateInput = document.getElementById('coldPlungeDate');
-                                    if (dateInput && dateInput.value) {
-                                        const deliveryDate = formatDate(dateInput.value);
-                                        const pickupDate = new Date(dateInput.value);
-                                        pickupDate.setDate(pickupDate.getDate() + 1);
-
-                                        component.model.selectedVariant.customAttributes = [
-                                            { key: 'Delivery', value: deliveryDate + ' at 10am' },
-                                            { key: 'Pickup', value: formatDate(pickupDate) + ' by 12pm' }
-                                        ];
-                                    }
-                                }
-                            }
-                        },
-                        cart: {
-                            styles: {
-                                button: {
-                                    "font-family": "Advercase, sans-serif",
-                                    "background-color": "#6b1f1f",
-                                    ":hover": { "background-color": "#5a1a1a" },
-                                    ":focus": { "background-color": "#5a1a1a" },
-                                    "border-radius": "0px"
-                                }
-                            }
-                        }
-                    }
-                });
-            });
-        }
-
-        // Floaties product
-        const floatiesContainer = document.getElementById('product-floaties');
-        if (floatiesContainer && !floatiesContainer.hasChildNodes()) {
-            ShopifyBuy.UI.onReady(client).then(function(ui) {
-                ui.createComponent('product', {
-                    id: '10246638895423',
-                    node: floatiesContainer,
-                    moneyFormat: '%24%7B%7Bamount%7D%7D',
-                    options: {
-                        product: {
-                            styles: {
-                                product: {
-                                    "@media (min-width: 601px)": {
-                                        "max-width": "100%",
-                                        "margin-left": "0",
-                                        "margin-bottom": "0"
-                                    }
-                                },
-                                button: {
-                                    "font-family": "Advercase, sans-serif",
-                                    "font-size": "14px",
-                                    "padding-top": "12px",
-                                    "padding-bottom": "12px",
-                                    ":hover": { "background-color": "#5a1a1a" },
-                                    "background-color": "#6b1f1f",
-                                    ":focus": { "background-color": "#5a1a1a" },
-                                    "border-radius": "0px"
-                                },
-                                title: { display: "none" },
-                                price: { display: "none" }
-                            },
-                            contents: {
-                                img: false,
-                                title: false,
-                                price: false
-                            },
-                            text: {
-                                button: 'Add to Cart'
-                            }
-                        },
-                        cart: {
-                            styles: {
-                                button: {
-                                    "font-family": "Advercase, sans-serif",
-                                    "background-color": "#6b1f1f",
-                                    ":hover": { "background-color": "#5a1a1a" },
-                                    ":focus": { "background-color": "#5a1a1a" },
-                                    "border-radius": "0px"
-                                }
-                            }
-                        }
-                    }
-                });
-            });
-        }
     }
 
     // Initialize when DOM is ready
@@ -166,7 +200,7 @@
         initDatePicker();
 
         // Initialize Shopify products when services tab is clicked
-        const servicesTab = document.querySelector('[data-tab="services"]');
+        var servicesTab = document.querySelector('[data-tab="services"]');
         if (servicesTab) {
             servicesTab.addEventListener('click', function() {
                 setTimeout(initShopifyProducts, 100);
