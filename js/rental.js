@@ -88,6 +88,22 @@
                                 },
                                 text: {
                                     button: 'Add to Cart'
+                                },
+                                events: {
+                                    addVariantToCart: function(product) {
+                                        var dateInput = document.getElementById('coldPlungeDate');
+                                        if (dateInput && dateInput.value) {
+                                            var deliveryDate = formatDate(dateInput.value);
+                                            var pickupDate = new Date(dateInput.value);
+                                            pickupDate.setDate(pickupDate.getDate() + 1);
+
+                                            product.selectedVariantTrackingInfo.customAttributes = [
+                                                { key: 'Delivery', value: deliveryDate + ' at 10am' },
+                                                { key: 'Pickup', value: formatDate(pickupDate) + ' by 12pm' }
+                                            ];
+                                        }
+                                        return product;
+                                    }
                                 }
                             },
                             cart: {
