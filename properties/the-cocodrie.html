@@ -140,15 +140,14 @@
                     <h3>Cold Plunge Rental</h3>
                     <p class="rental-price">$200/day</p>
                     <p>24-hour rental (10am - 12pm next day). Includes delivery, setup, and pickup.</p>
-                    <label for="coldPlungeDate">Select delivery date:</label>
-                    <input type="date" id="coldPlungeDate" class="rental-input">
-                    <div id="product-cold-plunge"></div>
+                    <p><strong>Please enter your preferred delivery date in the cart notes at checkout.</strong></p>
+                    <div id="product-component-cold-plunge"></div>
                 </div>
                 <div class="rental-item">
                     <h3>Pool Floaties Package</h3>
                     <p class="rental-price">$50 for your entire stay</p>
                     <p>3 premium pool floaties available for the duration of your visit.</p>
-                    <div id="product-floaties"></div>
+                    <div id="product-component-floaties"></div>
                 </div>
             </section>
             <section class="content-section">
@@ -601,13 +600,42 @@
           ui.createComponent('product', { id: '10173610099007', node: document.getElementById('product-component-1765392260161'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
           ui.createComponent('product', { id: '10173609902399', node: document.getElementById('product-component-1765393090361'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
           ui.createComponent('product', { id: '10173609935167', node: document.getElementById('product-component-1765393150507'), moneyFormat: '%24%7B%7Bamount%7D%7D', options: productOptions });
+
+          // Rental products with cart notes enabled
+          var rentalOptions = {
+            "product": {
+              "styles": {
+                "product": { "@media (min-width: 601px)": { "max-width": "100%", "margin-left": "0", "margin-bottom": "0" } },
+                "button": { "font-family": "Lato, sans-serif", "color": "#efeed5", "background-color": "#d36b6c", ":hover": { "background-color": "#be6061" }, ":focus": { "background-color": "#be6061" }, "border-radius": "0" }
+              },
+              "contents": { "img": false, "title": false, "price": false },
+              "text": { "button": "Add to cart" }
+            },
+            "cart": {
+              "contents": { "note": true },
+              "styles": {
+                "button": { "font-family": "Lato, sans-serif", ":hover": { "background-color": "#be6061" }, "background-color": "#d36b6c", ":focus": { "background-color": "#be6061" } },
+                "cart": { "background-color": "#efeed5" },
+                "footer": { "background-color": "#efeed5" }
+              },
+              "text": { "noteDescription": "Enter delivery date for cold plunge rental:" }
+            },
+            "toggle": {
+              "styles": { "toggle": { "background-color": "#d36b6c", ":hover": { "background-color": "#be6061" }, ":focus": { "background-color": "#be6061" } } }
+            }
+          };
+          var coldPlungeNode = document.getElementById('product-component-cold-plunge');
+          var floatiesNode = document.getElementById('product-component-floaties');
+          if (coldPlungeNode) ui.createComponent('product', { id: '10246728089919', node: coldPlungeNode, moneyFormat: '%24%7B%7Bamount%7D%7D', options: rentalOptions });
+          if (floatiesNode) ui.createComponent('product', { id: '10246638895423', node: floatiesNode, moneyFormat: '%24%7B%7Bamount%7D%7D', options: rentalOptions });
         });
       }
 
-      // Initialize when shop tab is clicked
+      // Initialize when shop or services tab is clicked
       document.addEventListener('click', function(e) {
         var shopTab = e.target.closest('[data-tab="shop"]');
-        if (shopTab && !shopifyInitialized) {
+        var servicesTab = e.target.closest('[data-tab="services"]');
+        if ((shopTab || servicesTab) && !shopifyInitialized) {
           if (window.ShopifyBuy && window.ShopifyBuy.UI) {
             ShopifyBuyInit();
           } else {
