@@ -2,10 +2,12 @@
 (function() {
     var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
     var rentalProductsInitialized = false;
+    var selectedDeliveryDate = null;
+    var selectedPickupDate = null;
 
     // Format date for display
     function formatDate(dateStr) {
-        const date = new Date(dateStr);
+        var date = new Date(dateStr);
         return date.toLocaleDateString('en-US', {
             weekday: 'short',
             month: 'short',
@@ -15,14 +17,63 @@
 
     // Set up date picker with min date of tomorrow
     function initDatePicker() {
-        const coldPlungeDate = document.getElementById('coldPlungeDate');
+        var coldPlungeDate = document.getElementById('coldPlungeDate');
         if (coldPlungeDate) {
-            const today = new Date();
-            const tomorrow = new Date(today);
+            var today = new Date();
+            var tomorrow = new Date(today);
             tomorrow.setDate(tomorrow.getDate() + 1);
             coldPlungeDate.min = tomorrow.toISOString().split('T')[0];
             coldPlungeDate.value = tomorrow.toISOString().split('T')[0];
+
+            // Update selected dates when date changes
+            coldPlungeDate.addEventListener('change', updateSelectedDates);
+            updateSelectedDates();
         }
+    }
+
+    function updateSelectedDates() {
+        var coldPlungeDate = document.getElementById('coldPlungeDate');
+        if (coldPlungeDate && coldPlungeDate.value) {
+            selectedDeliveryDate = formatDate(coldPlungeDate.value) + ' at 10am';
+            var pickup = new Date(coldPlungeDate.value);
+            pickup.setDate(pickup.getDate() + 1);
+            selectedPickupDate = formatDate(pickup) + ' by 12pm';
+        }
+    }
+
+    // Watch for cart updates and inject date info
+    function watchCartForDates() {
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes.length) {
+                    injectDatesIntoCart();
+                }
+            });
+        });
+
+        // Observe the entire document for Shopify cart changes
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    function injectDatesIntoCart() {
+        // Find cold plunge items in cart and add date info
+        var cartItems = document.querySelectorAll('.shopify-buy__cart-item');
+        cartItems.forEach(function(item) {
+            var titleEl = item.querySelector('.shopify-buy__cart-item__title');
+            if (titleEl && titleEl.textContent.toLowerCase().includes('cold plunge')) {
+                // Check if we already added dates
+                if (!item.querySelector('.rental-dates-info') && selectedDeliveryDate) {
+                    var datesDiv = document.createElement('div');
+                    datesDiv.className = 'rental-dates-info';
+                    datesDiv.style.cssText = 'font-size: 12px; margin-top: 4px; color: #d65f62;';
+                    datesDiv.innerHTML = '<strong>Delivery:</strong> ' + selectedDeliveryDate + '<br><strong>Pickup:</strong> ' + selectedPickupDate;
+                    titleEl.parentNode.insertBefore(datesDiv, titleEl.nextSibling);
+                }
+            }
+        });
     }
 
     // Load Shopify SDK if not already loaded
@@ -89,20 +140,10 @@
                                 text: {
                                     button: 'Add to Cart'
                                 },
-                                events: {
-                                    addVariantToCart: function(product) {
-                                        var dateInput = document.getElementById('coldPlungeDate');
-                                        if (dateInput && dateInput.value) {
-                                            var deliveryDate = formatDate(dateInput.value);
-                                            var pickupDate = new Date(dateInput.value);
-                                            pickupDate.setDate(pickupDate.getDate() + 1);
-
-                                            product.selectedVariantTrackingInfo.customAttributes = [
-                                                { key: 'Delivery', value: deliveryDate + ' at 10am' },
-                                                { key: 'Pickup', value: formatDate(pickupDate) + ' by 12pm' }
-                                            ];
-                                        }
-                                        return product;
+                                DOMEvents: {
+                                    'click .shopify-buy__btn': function() {
+                                        updateSelectedDates();
+                                        setTimeout(injectDatesIntoCart, 500);
                                     }
                                 }
                             },
@@ -255,6 +296,9 @@
                 }
 
                 rentalProductsInitialized = true;
+
+                // Start watching for cart updates
+                watchCartForDates();
             });
         });
     }
