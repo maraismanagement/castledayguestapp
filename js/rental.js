@@ -146,21 +146,14 @@
                                 DOMEvents: {
                                     'click .shopify-buy__btn': function() {
                                         updateSelectedDates();
-                                        setTimeout(function() {
-                                            injectDatesIntoCart();
-                                            // Set cart note with rental dates
-                                            if (shopifyUI && selectedDeliveryDate) {
-                                                var note = 'COLD PLUNGE RENTAL\nDelivery: ' + selectedDeliveryDate + '\nPickup: ' + selectedPickupDate;
-                                                var cart = shopifyUI.components.cart[0];
-                                                if (cart && cart.model) {
-                                                    cart.model.setNote(note);
-                                                }
-                                            }
-                                        }, 800);
+                                        setTimeout(injectDatesIntoCart, 500);
                                     }
                                 }
                             },
                             cart: {
+                                contents: {
+                                    note: true
+                                },
                                 styles: {
                                     button: {
                                         "font-family": "Advercase, sans-serif",
@@ -179,12 +172,14 @@
                                     currency: { "color": "#d65f62" },
                                     close: { "color": "#d65f62", ":hover": { "color": "#d65f62" } },
                                     empty: { "color": "#d65f62" },
+                                    noteDescription: { "color": "#d65f62" },
                                     cart: { "background-color": "#edecde" },
                                     footer: { "background-color": "#edecde" }
                                 },
                                 text: {
                                     total: 'Subtotal',
-                                    button: 'Checkout'
+                                    button: 'Checkout',
+                                    noteDescription: 'Enter your cold plunge delivery date:'
                                 },
                                 popup: false
                             },
