@@ -99,7 +99,18 @@
                                         ":hover": { "background-color": "#c15658", "color": "#edecde" },
                                         ":focus": { "background-color": "#c15658" },
                                         "border-radius": "0px"
-                                    }
+                                    },
+                                    title: { "color": "#d65f62" },
+                                    header: { "color": "#d65f62" },
+                                    lineItems: { "color": "#d65f62" },
+                                    subtotalText: { "color": "#d65f62" },
+                                    subtotal: { "color": "#d65f62" },
+                                    notice: { "color": "#d65f62" },
+                                    currency: { "color": "#d65f62" },
+                                    close: { "color": "#d65f62", ":hover": { "color": "#d65f62" } },
+                                    empty: { "color": "#d65f62" },
+                                    cart: { "background-color": "#edecde" },
+                                    footer: { "background-color": "#edecde" }
                                 },
                                 text: {
                                     total: 'Subtotal',
@@ -107,13 +118,26 @@
                                 },
                                 popup: false
                             },
+                            lineItem: {
+                                styles: {
+                                    variantTitle: { "color": "#d65f62" },
+                                    title: { "color": "#d65f62" },
+                                    price: { "color": "#d65f62" },
+                                    quantity: { "color": "#d65f62" },
+                                    quantityIncrement: { "color": "#d65f62", "border-color": "#d65f62" },
+                                    quantityDecrement: { "color": "#d65f62", "border-color": "#d65f62" },
+                                    quantityInput: { "color": "#d65f62", "border-color": "#d65f62" }
+                                }
+                            },
                             toggle: {
                                 styles: {
                                     toggle: {
                                         "background-color": "#d65f62",
                                         ":hover": { "background-color": "#c15658" },
                                         ":focus": { "background-color": "#c15658" }
-                                    }
+                                    },
+                                    count: { "color": "#edecde" },
+                                    iconPath: { "fill": "#edecde" }
                                 }
                             }
                         }
@@ -169,7 +193,18 @@
                                         ":hover": { "background-color": "#c15658", "color": "#edecde" },
                                         ":focus": { "background-color": "#c15658" },
                                         "border-radius": "0px"
-                                    }
+                                    },
+                                    title: { "color": "#d65f62" },
+                                    header: { "color": "#d65f62" },
+                                    lineItems: { "color": "#d65f62" },
+                                    subtotalText: { "color": "#d65f62" },
+                                    subtotal: { "color": "#d65f62" },
+                                    notice: { "color": "#d65f62" },
+                                    currency: { "color": "#d65f62" },
+                                    close: { "color": "#d65f62", ":hover": { "color": "#d65f62" } },
+                                    empty: { "color": "#d65f62" },
+                                    cart: { "background-color": "#edecde" },
+                                    footer: { "background-color": "#edecde" }
                                 },
                                 text: {
                                     total: 'Subtotal',
@@ -177,13 +212,26 @@
                                 },
                                 popup: false
                             },
+                            lineItem: {
+                                styles: {
+                                    variantTitle: { "color": "#d65f62" },
+                                    title: { "color": "#d65f62" },
+                                    price: { "color": "#d65f62" },
+                                    quantity: { "color": "#d65f62" },
+                                    quantityIncrement: { "color": "#d65f62", "border-color": "#d65f62" },
+                                    quantityDecrement: { "color": "#d65f62", "border-color": "#d65f62" },
+                                    quantityInput: { "color": "#d65f62", "border-color": "#d65f62" }
+                                }
+                            },
                             toggle: {
                                 styles: {
                                     toggle: {
                                         "background-color": "#d65f62",
                                         ":hover": { "background-color": "#c15658" },
                                         ":focus": { "background-color": "#c15658" }
-                                    }
+                                    },
+                                    count: { "color": "#edecde" },
+                                    iconPath: { "fill": "#edecde" }
                                 }
                             }
                         }

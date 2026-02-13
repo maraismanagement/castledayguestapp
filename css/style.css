@@ -863,6 +863,13 @@ a {
     max-width: 250px;
 }
 
+#product-cold-plunge,
+#product-floaties {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
 /* Shop Products */
 .shop-products {
     display: grid;
