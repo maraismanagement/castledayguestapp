@@ -135,13 +135,43 @@
 
         <div id="services" class="tab-panel">
             <section class="content-section">
-                <h2>Add-On Services</h2>
+                <h2>Equipment Rentals</h2>
+                <div class="rental-lookup">
+                    <p>Enter your name to view rental options for your stay.</p>
+                    <div class="rental-form">
+                        <input type="text" id="guestNameInput" placeholder="Your name (as on booking)" class="rental-input">
+                        <button id="lookupBtn" class="btn">Look Up My Stay</button>
+                    </div>
+                    <div id="rentalError" class="rental-error"></div>
+                </div>
+                <div id="rentalOptions" class="rental-options" style="display: none;">
+                    <div class="rental-guest-info">
+                        <p><strong>Welcome, <span id="guestNameDisplay"></span>!</strong></p>
+                        <p>Your stay: <span id="stayDates"></span></p>
+                    </div>
+                    <div class="rental-item">
+                        <h3>Cold Plunge Rental</h3>
+                        <p class="rental-price">$200/day</p>
+                        <p>24-hour rental (10am - 12pm next day). Includes delivery, setup, and pickup.</p>
+                        <label for="coldPlungeDate">Select delivery date:</label>
+                        <input type="date" id="coldPlungeDate" class="rental-input">
+                        <div id="product-cold-plunge"></div>
+                    </div>
+                    <div class="rental-item">
+                        <h3>Pool Floaties Package</h3>
+                        <p class="rental-price">$50 for your entire stay</p>
+                        <p>3 premium pool floaties available for the duration of your visit.</p>
+                        <div id="product-floaties"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="content-section">
+                <h2>Other Services</h2>
                 <div class="info-block">
                     <p>Enhance your stay with these optional services.</p>
                     <a href="mailto:hello@staymarais.com" class="btn">Email Us to Book</a>
                 </div>
                 <ul>
-                    <li><strong>Cold Plunge</strong> - $200/day (24 hours, includes setup)</li>
                     <li><strong>Private Chef</strong> - In-home dining experience</li>
                     <li><strong>Massage Therapy</strong> - Licensed therapists come to you</li>
                     <li><strong>Grocery Delivery</strong> - Fridge stocked before arrival</li>
@@ -149,7 +179,7 @@
                     <li><strong>Decorators</strong> - Jet Set Bach</li>
                     <li><strong>Event Planning</strong> - Weddings, reunions, corporate</li>
                 </ul>
-                </section>
+            </section>
         </div>
 
         <div id="recs" class="tab-panel">
@@ -544,6 +574,7 @@
     <script src="../js/share.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/events-2026.js"></script>
+    <script src="../js/rental.js"></script>
     <script type="text/javascript">
     /*<![CDATA[*/
     (function () {
