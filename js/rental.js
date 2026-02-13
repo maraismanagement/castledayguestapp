@@ -38,7 +38,7 @@
         if (coldPlungeContainer && !coldPlungeContainer.hasChildNodes()) {
             ShopifyBuy.UI.onReady(client).then(function(ui) {
                 ui.createComponent('product', {
-                    id: '9859098214697', // Replace with actual cold plunge product ID
+                    id: '10246728089919',
                     node: coldPlungeContainer,
                     moneyFormat: '%24%7B%7Bamount%7D%7D',
                     options: {
@@ -109,7 +109,7 @@
         if (floatiesContainer && !floatiesContainer.hasChildNodes()) {
             ShopifyBuy.UI.onReady(client).then(function(ui) {
                 ui.createComponent('product', {
-                    id: '9859098247465', // Replace with actual floaties product ID
+                    id: '10246638895423',
                     node: floatiesContainer,
                     moneyFormat: '%24%7B%7Bamount%7D%7D',
                     options: {
