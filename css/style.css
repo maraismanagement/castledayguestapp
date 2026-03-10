@@ -732,7 +732,7 @@ a {
 .event-card {
     background: var(--cream);
     border: 2px solid var(--red);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .event-card:last-child {
@@ -740,34 +740,102 @@ a {
 }
 
 .event-card-content {
-    padding: 14px;
+    padding: 12px 14px;
 }
 
 .event-card-date {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: bold;
     color: var(--red);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
 }
 
 .event-card-title {
     font-family: 'Advercase', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--red);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .event-card-desc {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--red);
     line-height: 1.4;
+    margin-bottom: 0;
 }
 
 .event-card-desc a {
     color: var(--red);
     text-decoration: underline;
+}
+
+.event-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.event-card-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.event-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--red);
+    margin-top: 6px;
+}
+
+.event-card-category {
+    background: var(--red);
+    color: var(--cream);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.event-card-location,
+.event-card-times {
+    color: var(--red);
+    opacity: 0.8;
+}
+
+.events-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.events-loading {
+    text-align: center;
+    padding: 24px;
+    color: var(--red);
+    font-size: 0.9rem;
+}
+
+.see-all-events {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    padding: 10px;
+    background: var(--red);
+    color: var(--cream);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.see-all-events:hover,
+.see-all-events:active {
+    opacity: 0.9;
 }
 
 /* Floating Share Button */
