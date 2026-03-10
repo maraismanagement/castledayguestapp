@@ -731,16 +731,21 @@ a {
 
 .event-card {
     background: var(--cream);
-    border: 2px solid var(--red);
-    margin-bottom: 8px;
+    border-bottom: 1px solid var(--red);
+    padding: 12px 0;
 }
 
 .event-card:last-child {
-    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.event-card:first-child {
+    padding-top: 0;
 }
 
 .event-card-content {
-    padding: 12px 14px;
+    padding: 0;
 }
 
 .event-card-date {
