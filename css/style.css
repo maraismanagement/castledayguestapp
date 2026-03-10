@@ -731,21 +731,16 @@ a {
 
 .event-card {
     background: var(--cream);
-    border-bottom: 1px solid var(--red);
-    padding: 12px 0;
+    border: 1px solid var(--red);
+    margin-bottom: 10px;
 }
 
 .event-card:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.event-card:first-child {
-    padding-top: 0;
+    margin-bottom: 0;
 }
 
 .event-card-content {
-    padding: 0;
+    padding: 12px 14px;
 }
 
 .event-card-date {
