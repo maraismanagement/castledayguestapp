@@ -775,6 +775,16 @@ a {
 .event-card-link {
     text-decoration: none;
     color: inherit;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.event-card-link .event-card {
+    margin-bottom: 0;
+}
+
+.event-card-link:last-child {
+    margin-bottom: 0;
 }
 
 .event-card-image {
