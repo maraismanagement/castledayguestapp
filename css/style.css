@@ -363,7 +363,7 @@ a {
 
 .header-image {
     width: 100%;
-    height: 230px;
+    height: 450px;
     overflow: hidden;
     line-height: 0;
     border-top: 2px solid var(--red);
@@ -390,7 +390,7 @@ a {
 
 .header-content h1 {
     font-family: 'Advercase', sans-serif;
-    font-size: 1.8rem;
+    font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.05em;
