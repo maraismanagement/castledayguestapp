@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const headerImages = {
         'house': { src: '../images/header-house.jpg', position: 'center center' },
         'pool': { src: '../images/header-pool.jpg', position: 'center center' },
-        'shop': { src: '../images/header-shop.jpg', position: 'center center' },
-        'services': { src: '../images/header-services.jpg', position: 'center 30%' },
+        'shop': { src: '../images/header-shop.jpg', position: 'center top' },
+        'services': { src: '../images/header-services.jpg', position: 'left top' },
         'recs': { src: '../images/header-recs.jpg', position: 'center 20%' },
-        'contact': { src: '../images/header-contact.jpg', position: 'center center' }
+        'contact': { src: '../images/header-house.jpg', position: 'center bottom' }
     };
 
     // Function to update header image
