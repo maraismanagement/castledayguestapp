@@ -1098,11 +1098,6 @@ a {
 }
 
 @media (min-width: 900px) {
-    body {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
     .villa-label .villa-name {
         font-size: 1rem;
     }
