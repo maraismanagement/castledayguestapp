@@ -1124,23 +1124,10 @@ a {
     text-decoration: none;
 }
 
-.review-banner-label,
 .review-banner-text {
     width: 100%;
-}
-
-.review-banner-label {
-    font-family: 'Advercase', sans-serif;
-    font-size: 0.65rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    line-height: 1.3;
-}
-
-.review-banner-text {
     font-size: 0.85rem;
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
 .review-banner-cta {
@@ -1166,7 +1153,6 @@ a {
         padding: 14px 24px;
     }
 
-    .review-banner-label,
     .review-banner-text {
         width: auto;
     }
